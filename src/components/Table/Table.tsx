@@ -59,7 +59,7 @@ const StyledPagination = styled(Pagination)`
   justify-content: center;
 `
 
-const StyledTable = (styled(AntTable)`
+const StyledTable = styled(AntTable)`
   &.ant-table-wrapper {
     width: 100%;
     padding: ${themeSpace(2)};
@@ -91,7 +91,7 @@ const StyledTable = (styled(AntTable)`
   td.break-all {
     word-break: break-all;
   }
-` as React.ComponentType) as new <T>() => React.Component<AntTableProps<T>>
+` as React.ComponentType as new <T>() => React.Component<AntTableProps<T>>
 
 function filterColumnsByVisibility(columns: ColumnType[], visibleColumns?: string[]) {
   return _.isUndefined(visibleColumns) || _.isEmpty(visibleColumns)

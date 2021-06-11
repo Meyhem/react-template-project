@@ -1,6 +1,6 @@
 import React from 'react'
 import { Select as AntSelect } from 'antd'
-import { SelectProps as AntSelectProps, LabeledValue } from 'antd/lib/select'
+import { SelectProps as AntSelectProps, SelectValue } from 'antd/lib/select'
 import styled, { DefaultTheme } from 'styled-components/macro'
 import _ from 'lodash'
 
@@ -9,8 +9,7 @@ type SizeType = 'small' | 'middle' | 'large' | 'normal'
 export type SelectVariants = 'primary' | 'secondary' | 'default'
 export type SelectOption = { value: string; label: string }
 
-export interface SelectProps
-  extends React.PropsWithChildren<AntSelectProps<React.ReactText | React.ReactText[] | LabeledValue | LabeledValue[]>> {
+export interface SelectProps extends React.PropsWithChildren<AntSelectProps<SelectValue>> {
   variant?: SelectVariants
   options?: SelectOption[]
 }
@@ -128,9 +127,14 @@ const defaultProps: SelectProps = {
   variant: 'default'
 }
 
-export const Select = ({ children, options, value, ...rest }: SelectProps) => {
+export const Select = ({ children, options, value, onSelect, ...rest }: SelectProps) => {
   return (
-    <StyledSelect {...defaultProps} {..._.omit(rest, 'error')} value={_.isEmpty(value) ? undefined : value}>
+    <StyledSelect
+      {...defaultProps}
+      {..._.omit(rest, 'error')}
+      value={_.isEmpty(value) ? undefined : value}
+      onSelect={onSelect}
+    >
       {!options && children}
       {options &&
         _.map(options, (opt, i) => (
