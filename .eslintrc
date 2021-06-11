@@ -1,0 +1,89 @@
+{
+  "parser": "@typescript-eslint/parser", // Specifies the ESLint parser
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jest": true,
+    "node": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:lodash/recommended",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:prettier/recommended"
+    // If you want extra rules/extensions, it can be added here:
+    // 'plugin:react/recommended', // Uses the recommended rules from @eslint-plugin-react
+    // 'plugin:@typescript-eslint/recommended', // Uses the recommended rules from @typescript-eslint/eslint-plugin
+  ],
+  "plugins": ["prettier", "lodash", "react-hooks"],
+  "parserOptions": {
+    "ecmaVersion": 2018, // Allows for the parsing of modern ECMAScript features
+    "sourceType": "module", // Allows for the use of imports
+    "ecmaFeatures": {
+      "jsx": true // Allows for the parsing of JSX
+    }
+  },
+  "rules": {
+    // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
+    // e.g. "@typescript-eslint/explicit-function-return-type": "off",
+    "prettier/prettier": ["error"],
+    "@typescript-eslint/member-delimiter-style": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/explicit-member-accessibility": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "no-console": "warn",
+    "camelcase": "error",
+    "import/no-unresolved": "off",
+    "arrow-parens": [2, "as-needed"],
+    "import/named": "off",
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "types": {
+          "{}": false,
+          "object": false
+        }
+      }
+    ],
+    "react/prop-types": "off",
+    "import/no-anonymous-default-export": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "lodash/import-scope": ["error", "full"],
+    "lodash/matches-prop-shorthand": [2, "never"],
+    "react/react-in-jsx-scope": "off",
+    "lodash/prop-shorthand": "off",
+    "lodash/prefer-reject": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "styled-components",
+            "message": "Please import from styled-components/macro."
+          }
+        ],
+        "patterns": ["!styled-components/macro"]
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+    }
+  },
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/storybook-static/**",
+    "**/coverage/**",
+    "**/build/**",
+    "**/.git/**"
+  ]
+}
