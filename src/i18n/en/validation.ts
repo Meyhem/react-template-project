@@ -1,1 +1,3 @@
-export default {}
+export default {
+  Required: 'Field is mandatory'
+}

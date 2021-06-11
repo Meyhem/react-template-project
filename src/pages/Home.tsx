@@ -1,14 +1,57 @@
+import { Field, Form } from 'react-final-form'
+import { Button } from '../components/Button'
+import { Box } from '../components/FlexBox'
+import { FormControl } from '../components/FormControl'
+import { Input, InputProps } from '../components/Input'
 import { Table, ColumnType } from '../components/Table'
+import { createFormValidator, required } from '../utils/validation'
 
 const columns: ColumnType[] = [
   { id: 'name', title: 'Name', dataIndex: 'name' },
   { id: 'surname', title: 'Surname', dataIndex: 'surname' }
 ]
 
+type TestFormValues = {
+  name: string
+}
+
 function Home() {
   return (
     <>
-      <Table rowKey="id" columns={columns} dataSource={data} />
+      <h2>Example form</h2>
+      <Form<TestFormValues>
+        validate={createFormValidator({ name: [required()] })()}
+        initialValues={{ name: 'John' }}
+        onSubmit={() => alert('Well... Thats working, what now ?')}
+        render={({ handleSubmit, values, errors }) => {
+          return (
+            <form onSubmit={handleSubmit}>
+              <Field
+                name="name"
+                render={p => (
+                  <FormControl<InputProps>
+                    {...p}
+                    component={Input}
+                    size="middle"
+                    placeholder="Put here sumthing"
+                    label={'Sample input field'}
+                    htmlType="text"
+                    additionalProps={{ autoComplete: 'off' }}
+                  />
+                )}
+              />
+              <div>Vals: {JSON.stringify(values)}</div>
+              <div>Errs: {JSON.stringify(errors)}</div>
+              <Button variant="primary">Submit</Button>
+            </form>
+          )
+        }}
+      />
+
+      <Box mt={3}>
+        <h2>Example Table</h2>
+        <Table rowKey="id" columns={columns} dataSource={data} />
+      </Box>
     </>
   )
 }

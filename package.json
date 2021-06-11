@@ -36,7 +36,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && yarn copy-configs",
-    "test": "cross-env yarn test",
+    "test": "cross-env react-scripts test",
     "lint": "cross-env eslint ./src/**/*.{ts,tsx} --format=codeframe",
     "copy-configs": "shx cp -R ./configs ./build"
   },
