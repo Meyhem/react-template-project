@@ -1,0 +1,11 @@
+import { getType } from 'typesafe-actions'
+import { all, takeLatest } from 'redux-saga/effects'
+import { <%- casing.pascalCase(name) %>Actions } from './actions'
+
+export function* placeholderSaga() {
+  throw new Error('Not implemented')
+}
+
+export function* <%- casing.camelCase(name) %>Saga() {
+  yield all([takeLatest(getType(<%- casing.pascalCase(name) %>Actions.exampleAction), placeholderSaga)])
+}

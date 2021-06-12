@@ -1,0 +1,17 @@
+import { getType, Reducer } from 'typesafe-actions'
+
+import { <%- casing.pascalCase(name) %>Actions } from './actions'
+import { <%- casing.pascalCase(name) %>State } from './types'
+
+export const initialState: <%- casing.pascalCase(name) %>State = {}
+
+export const <%- casing.camelCase(name) %>Reducer: Reducer<<%- casing.pascalCase(name) %>State, <%- casing.pascalCase(name) %>Actions> = (state = initialState, action) => {
+  switch (action.type) {
+    case getType(<%- casing.pascalCase(name) %>Actions.exampleAction):
+      return {
+        ...state
+      }
+    default:
+      return state
+  }
+}

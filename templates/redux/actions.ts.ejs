@@ -1,0 +1,7 @@
+import { ActionType, createAction } from 'typesafe-actions'
+
+export const <%- casing.pascalCase(name) %>Actions = {
+  exampleAction: createAction('<%- casing.constantCase(name)%>/example')<{ payloadProperty: string }>()
+}
+
+export type <%- casing.pascalCase(name) %>Actions = ActionType<typeof <%- casing.pascalCase(name) %>Actions>

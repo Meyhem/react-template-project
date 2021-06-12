@@ -1,0 +1,7 @@
+import { createSelector } from 'reselect'
+import { RootState } from '../types'
+
+const selectState = (state: RootState) => state.<%- casing.camelCase(name) %>
+
+// eslint-disable-next-line lodash/prefer-constant
+export const selectExample = createSelector(selectState, () => 'placeholder')

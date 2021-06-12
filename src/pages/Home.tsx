@@ -1,10 +1,10 @@
-import { Field, Form } from 'react-final-form'
+import { Form } from 'react-final-form'
+
 import { Button } from '../components/Button'
 import { Box } from '../components/FlexBox'
-import { FormControl } from '../components/FormControl'
-import { Input, InputProps } from '../components/Input'
 import { Table, ColumnType } from '../components/Table'
-import { createFormValidator, required } from '../utils/validation'
+import { InputField } from '../form/InputField'
+import { createFormValidator, required } from '../form/validation'
 
 const columns: ColumnType[] = [
   { id: 'name', title: 'Name', dataIndex: 'name' },
@@ -26,23 +26,12 @@ function Home() {
         render={({ handleSubmit, values, errors }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Field
-                name="name"
-                render={p => (
-                  <FormControl<InputProps>
-                    {...p}
-                    component={Input}
-                    size="middle"
-                    placeholder="Put here sumthing"
-                    label={'Sample input field'}
-                    htmlType="text"
-                    additionalProps={{ autoComplete: 'off' }}
-                  />
-                )}
-              />
+              <InputField name="name" placeholder="Put here sumthing" label="Sample input field" />
               <div>Vals: {JSON.stringify(values)}</div>
               <div>Errs: {JSON.stringify(errors)}</div>
-              <Button variant="primary">Submit</Button>
+              <Button htmlType="submit" variant="primary">
+                Submit
+              </Button>
             </form>
           )
         }}

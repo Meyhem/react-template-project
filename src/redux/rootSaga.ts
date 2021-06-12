@@ -1,9 +1,13 @@
 import Axios from 'axios'
 import { all, call } from 'redux-saga/effects'
 import { authSagas } from './auth'
+// AUTOIMPORT SAGA
 
 function* allSagas() {
-  yield all([authSagas()])
+  yield all([
+    // AUTOREGISTER SAGA
+    authSagas()
+  ])
 }
 
 export function* rootSaga() {

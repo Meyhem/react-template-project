@@ -4,7 +4,7 @@ import { FieldRenderProps } from 'react-final-form'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components/macro'
 
-import { LocalizedMessage } from '../../utils/validation'
+import { LocalizedMessage } from '../../form/validation'
 import { Flex, FlexProps } from '../FlexBox'
 import { Text, TextProps } from '../Text'
 import { themeColor } from '../../theme'

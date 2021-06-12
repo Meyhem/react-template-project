@@ -1,6 +1,7 @@
 import { FieldValidator } from 'final-form'
 import _ from 'lodash'
-import { Dictionary } from './types'
+
+import { Dictionary } from '../utils/types'
 
 export interface LocalizedMessage {
   translationKey: string

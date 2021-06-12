@@ -38,7 +38,8 @@
     "build": "react-scripts build && yarn copy-configs",
     "test": "cross-env react-scripts test",
     "lint": "cross-env eslint ./src/**/*.{ts,tsx} --format=codeframe",
-    "copy-configs": "shx cp -R ./configs ./build"
+    "copy-configs": "shx cp -R ./configs ./build",
+    "scaffold": "yarn sneed"
   },
   "eslintConfig": {
     "extends": [
@@ -81,6 +82,7 @@
     "prettier": "2.3.1",
     "react-scripts": "4.0.3",
     "shx": "0.3.3",
+    "sneed": "0.0.6",
     "typescript": "4.3.2"
   },
   "browserslist": {
