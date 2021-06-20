@@ -7,8 +7,6 @@ import { en } from './en'
 export const primaryLanguage = 'en'
 export const availableLanguages = ['en']
 
-const debug = process.env.NODE_ENV === 'development'
-
 const languageInstance = i18next.createInstance()
 
 languageInstance.use(initReactI18next).init({
@@ -18,16 +16,12 @@ languageInstance.use(initReactI18next).init({
   resources: {
     en
   },
+
   fallbackLng: 'en',
-  debug,
   keySeparator: '.',
   missingKeyHandler: (lngs: string[], ns: string, key: string) => {
     const message = `Translation for key: ${ns}:${key} is missing in languages: ${_.join(lngs, ',')}`
-    if (debug) {
-      throw new Error(message)
-    } else {
-      console.warn(message) // eslint-disable-line no-console
-    }
+    console.warn(message) // eslint-disable-line no-console
   }
 })
 

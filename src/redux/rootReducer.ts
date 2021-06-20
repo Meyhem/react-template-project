@@ -1,15 +1,13 @@
-import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
 import { History } from 'history'
+import { combineReducers } from 'redux'
 import persistReducer from 'redux-persist/es/persistReducer'
 import localStorage from 'redux-persist/lib/storage'
-import autoMergeLevel1 from 'redux-persist/lib/stateReconciler/autoMergeLevel1'
-
 import { authReducer } from './auth'
-import { reducer as tableReducer } from './table'
+import { searchReducer } from './search'
 // AUTOIMPORT REDUCER
 
-const persistedUserReducer = persistReducer(
+const persistedAuthReducer = persistReducer(
   {
     key: 'user',
     whitelist: ['token'],
@@ -18,19 +16,10 @@ const persistedUserReducer = persistReducer(
   authReducer
 )
 
-const persistedTableReducer = persistReducer(
-  {
-    key: 'table',
-    storage: localStorage,
-    stateReconciler: autoMergeLevel1
-  },
-  tableReducer
-)
-
 export const makeRootReducer = (history: History) =>
   combineReducers({
     // AUTOREGISTER REDUCER
+    search: searchReducer,
     router: connectRouter(history),
-    auth: persistedUserReducer,
-    table: persistedTableReducer
+    auth: persistedAuthReducer
   })

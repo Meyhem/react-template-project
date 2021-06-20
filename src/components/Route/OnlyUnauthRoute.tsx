@@ -7,5 +7,5 @@ type Props = RouteProps
 
 export const OnlyUnauthRoute = ({ ...rest }: Props) => {
   const loggedIn = useSelector(isUserLoggedIn)
-  return loggedIn ? <Redirect to={Routes.Home} /> : <Route {...rest} />
+  return loggedIn ? <Redirect to={Routes.Dashboard} /> : <Route {...rest} />
 }

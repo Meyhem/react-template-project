@@ -1,14 +1,12 @@
+import axios, { AxiosRequestConfig, CancelTokenSource, default as staticAxios } from 'axios'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { default as staticAxios, AxiosRequestConfig, CancelTokenSource } from 'axios'
-
 import { createRequestConfiguration } from '../utils/api'
-import axios from 'axios'
 
 interface UseApiConfig {
   cancelPrevious?: boolean
 }
 
-export function useApi(hookConfig?: UseApiConfig) {
+export function useApi<T>(hookConfig?: UseApiConfig) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<Error | null>(null)
   const [done, setDone] = useState(false)
@@ -29,7 +27,7 @@ export function useApi(hookConfig?: UseApiConfig) {
       setDone(false)
 
       try {
-        const res = await axios(reqConfig)
+        const res = (await axios(reqConfig)) as unknown as T
         setError(null)
         return res
       } catch (e) {
