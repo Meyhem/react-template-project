@@ -1,8 +1,8 @@
-import { all, put, takeLatest } from 'redux-saga/effects'
 import { getType } from 'typesafe-actions'
+import { all, takeLatest, put } from 'redux-saga/effects'
 import { AuthActions } from './actions'
 
-export function* logout() {
+export function* handleLogout() {
   yield put(
     AuthActions.setToken({
       token: ''
@@ -17,5 +17,8 @@ export function* handleRefreshToken() {
 }
 
 export function* authSagas() {
-  yield all([takeLatest(getType(AuthActions.logout), logout)])
+  yield all([
+    takeLatest(getType(AuthActions.logout), handleLogout),
+    takeLatest(getType(AuthActions.refreshToken), handleRefreshToken)
+  ])
 }

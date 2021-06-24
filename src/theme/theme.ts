@@ -12,9 +12,7 @@ export const theme = {
 
     bgPrimary: '#f9f9f9',
     bgSecondary: '#E0E0E0',
-
     borderPrimary: '#CACACA',
-    borderSecondary: 'rgba(128, 128, 128, 0.5)',
 
     textPrimary: 'black',
     textSecondary: '#222',
@@ -40,14 +38,13 @@ export type Breakpoints = 0 | 1 | 2
 
 export const GlobalStyle = createGlobalStyle`
   html, body, #root {
-    font-family: 'JetBrains Mono';
+    font-family: 'Verdana', sans-serif;
     font-size: ${({ theme }) => theme.fontSizes.small};
     font-weight: normal;
     width: 100%;
     height: 100%;
     margin: 0;
-    color: ${({ theme }) => theme.colors.textPrimary};
-    display: flex;
+    color: ${({ theme }) => theme.colors.primary};
   }
 `
 

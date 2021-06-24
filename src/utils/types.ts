@@ -1,5 +1,3 @@
-import { AxiosResponse } from 'axios'
-
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 
 export type SetDifference<A, B> = A extends B ? never : A
@@ -44,7 +42,9 @@ export interface Callable<R> {
 
 export type GenericReturnType<R, X> = X extends Callable<R> ? R : never
 
-export type ApiError = { errorMessage: string; genericDescription: string; errorCode: string; stack: string }
-export type ApiResponse<T> = { data: T; error: ApiError }
-
-export type AxiosApiResponse<T> = AxiosResponse<ApiResponse<T>>
+export type SelectResponse = {
+  values: {
+    key: string
+    value: string
+  }[]
+}

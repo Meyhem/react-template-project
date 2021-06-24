@@ -1,20 +1,19 @@
-import 'antd/dist/antd.css'
-import axios from 'axios'
-import qs from 'qs'
 import ReactDOM from 'react-dom'
-import { I18nextProvider } from 'react-i18next'
 import { Provider } from 'react-redux'
-import { Store } from 'redux'
-import { Persistor } from 'redux-persist/es/types'
+import { I18nextProvider } from 'react-i18next'
 import { PersistGate } from 'redux-persist/integration/react'
-import { ThemeProvider } from 'styled-components/macro'
+import { Persistor } from 'redux-persist/es/types'
+import qs from 'qs'
 import { App } from './app'
-import { config } from './applicationConfig'
-import { ViewportSizeContextProvider } from './components/ViewPortSizeContextProvider'
-import { i18n } from './i18n'
 import { createReduxStore } from './redux/store'
+import { i18n } from './i18n'
+import { Store } from 'redux'
+import axios from 'axios'
 import { GlobalStyle, theme } from './theme/theme'
+import { ThemeProvider } from 'styled-components/macro'
+import 'antd/dist/antd.css'
 import { applyAxiosInterceptors } from './utils/axios'
+import { ViewportSizeContextProvider } from './components/ViewPortSizeContextProvider'
 
 const init = () =>
   new Promise<{ store: Store; persistor: Persistor }>(resolve => {
@@ -34,7 +33,6 @@ export function stringifyGetParams(query: object) {
 
 Promise.all([init()]).then(([{ store, persistor }]) => {
   axios.defaults.paramsSerializer = stringifyGetParams
-  axios.defaults.baseURL = config.API_URL
 
   ReactDOM.render(
     <Provider store={store}>

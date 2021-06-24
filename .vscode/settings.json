@@ -1,17 +1,4 @@
 {
   "editor.formatOnSave": true,
   "diffEditor.codeLens": true,
-  "[typescript]": {
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": true
-    }
-  },
-  "[typescriptreact]": {
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": true
-    }
-  },
-  "files.exclude": {
-    "node_modules/": true
-}
 }
