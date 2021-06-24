@@ -22,6 +22,10 @@ export function createRequestConfiguration(
 export function* apiCall<Response>(
   apiCallConfiguration: AxiosRequestConfig
 ): Generator<any, AxiosResponse<Response>, any> {
+  return yield call(api, apiCallConfiguration)
+}
+
+export function* api<Response>(apiCallConfiguration: AxiosRequestConfig): Generator<any, AxiosResponse<Response>, any> {
   const source = axios.CancelToken.source()
   try {
     const reqData = createRequestConfiguration(apiCallConfiguration, {
