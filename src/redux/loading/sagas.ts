@@ -9,7 +9,7 @@ export function* loadingCall<A extends LoadingActions>(
 ): Generator<any> {
   try {
     yield put(actions.setLoading({ loading: true }))
-    yield call(callee, ...params)
+    return yield call(callee, ...params)
   } finally {
     yield put(actions.setLoading({ loading: false }))
   }
