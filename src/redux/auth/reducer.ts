@@ -1,13 +1,15 @@
 import { getType, Reducer } from 'typesafe-actions'
+import { initialLoadingState, withLoading } from '../loading'
 
 import { AuthActions } from './actions'
 import { AuthState } from './types'
 
 export const initialState: AuthState = {
-  token: ''
+  token: '',
+  ...initialLoadingState
 }
 
-export const authReducer: Reducer<AuthState, AuthActions> = (state = initialState, action) => {
+export const authReducerBase: Reducer<AuthState, AuthActions> = (state = initialState, action) => {
   switch (action.type) {
     case getType(AuthActions.setToken):
       return {
@@ -23,3 +25,5 @@ export const authReducer: Reducer<AuthState, AuthActions> = (state = initialStat
       return state
   }
 }
+
+export const authReducer = withLoading(initialState, AuthActions, authReducerBase)

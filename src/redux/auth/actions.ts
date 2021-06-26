@@ -1,11 +1,13 @@
 import { ActionType, createAction } from 'typesafe-actions'
+import { createLoadingActions } from '../loading'
 
 export const AuthActions = {
-  setToken: createAction('AUTH/set-token')<{
+  setToken: createAction('AUTH/SET_TOKEN')<{
     token: string
   }>(),
-  refreshToken: createAction('AUTH/refresh-token')(),
-  logout: createAction('AUTH/logout')()
+  refreshToken: createAction('AUTH/REFRESH_TOKEN')(),
+  logout: createAction('AUTH/LOGOUT')(),
+  ...createLoadingActions('AUTH')
 }
 
 export type AuthActions = ActionType<typeof AuthActions>
