@@ -21,7 +21,7 @@ languageInstance.use(initReactI18next).init({
   fallbackLng: 'en',
   debug,
   keySeparator: '.',
-  missingKeyHandler: (lngs: string[], ns: string, key: string) => {
+  missingKeyHandler: (lngs: readonly string[], ns: string, key: string) => {
     const message = `Translation for key: ${ns}:${key} is missing in languages: ${_.join(lngs, ',')}`
     if (debug) {
       throw new Error(message)

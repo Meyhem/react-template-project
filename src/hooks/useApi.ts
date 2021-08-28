@@ -32,7 +32,7 @@ export function useApi(hookConfig?: UseApiConfig) {
         const res = await axios(reqConfig)
         setError(null)
         return res
-      } catch (e) {
+      } catch (e: any) {
         setError(e)
         throw e
       } finally {
