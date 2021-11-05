@@ -3,7 +3,7 @@ import { Redirect, Route, RouteProps } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import { isUserLoggedIn } from '../../redux/auth/selectors'
-import { Routes } from '../../utils/routes'
+import { Routes } from '../../routes'
 
 type Props = {
   component: React.ElementType

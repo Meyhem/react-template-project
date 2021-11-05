@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios, { AxiosRequestConfig } from 'axios'
-import { createRequestConfiguration } from '../utils/api'
+import { createRequestConfiguration } from '../redux/api'
 
 export function useApiData<T = any>(params: AxiosRequestConfig, config: { skip?: boolean } = {}) {
   const { skip } = config

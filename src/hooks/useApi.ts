@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { default as staticAxios, AxiosRequestConfig, CancelTokenSource } from 'axios'
 
-import { createRequestConfiguration } from '../utils/api'
+import { createRequestConfiguration } from '../redux/api'
 import axios from 'axios'
 
 interface UseApiConfig {

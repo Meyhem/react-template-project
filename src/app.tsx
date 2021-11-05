@@ -2,7 +2,7 @@ import { ConnectedRouter } from 'connected-react-router'
 import { Switch } from 'react-router'
 
 import { history } from './utils/history'
-import { Routes } from './utils/routes'
+import { Routes } from './routes'
 import { LoadingFallback } from './components/Loading'
 import { Route } from './components/Route'
 import { importLazy } from './utils/import'
